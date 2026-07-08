@@ -1,0 +1,10 @@
+name = "milean"
+version = "0.1.0"
+defaultTargets = ["milean"]
+
+[[lean_lib]]
+name = "Milean"
+
+[[lean_exe]]
+name = "milean"
+root = "Main"
