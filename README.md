@@ -7,8 +7,8 @@ implemented in [leanprover/lean4#14421](https://github.com/leanprover/lean4/pull
 - `lake build :ilean.mmap`: produces `.ilean.mmap` for every previously
   existing `.ilean` on the olean search path, including the Lean distribution 
   itself.
-- `lake build @mathlib/Mathlib:ilean.mmap`: builds `Mathlib` package's `.ilean` files
-  and produces `.ilean.mmap` for every one of them.
+- `lake build @mathlib/Mathlib:ilean.mmap`: builds the `Mathlib` library
+  target's `.ilean` files and produces `.ilean.mmap` for every one of them.
 - `lake build +Mathlib.Data.List.Basic:ilean.mmap`: builds a single
   module's `.ilean` (if necessary) and also the module's `.ilean.mmap`.
 
@@ -19,5 +19,5 @@ remove it after creating mileans, you will likely trigger
 which means each `lake` process will have a higher startup cost AND possibly
 use an extra gig(!) of memory. You probably want to delete the `milean`
 dependency from the lakefile after generating the `.ilean.mmap` files. (TODO:
-move the generation of actual `.mmap.ilean` files into a separate executable
+move the generation of actual `.ilean.mmap` files into a separate executable
 and avoid this issue altogether.)
