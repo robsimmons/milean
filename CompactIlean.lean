@@ -1,5 +1,5 @@
 import Lean.Server.References
-open System Lean
+open System Lean IO
 
 /--
 Takes the location of an `.ilean` file, generates an `.ilean.mmap` file,
@@ -20,6 +20,7 @@ def convertEntireSearchPath : IO Unit := do
 
   let mut converted : Std.HashSet FilePath := {}
   for ileanPath in ileanPaths do
-    if not <| converted.contains ileanPath then
-      let compactedIleanPath ← convert ileanPath
-      converted := converted.insert ileanPath
+    let ileanRealPath ← FS.realPath ileanPath
+    if not <| converted.contains ileanRealPath then
+      let _compactedIleanPath ← convert ileanPath
+      converted := converted.insert ileanRealPath
