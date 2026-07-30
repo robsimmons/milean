@@ -14,6 +14,7 @@ module_facet ilean.mmap mod : FilePath := do
   exeJob.bindM fun exe =>
     ileanJob.mapM fun ilean => do
       addLeanTrace
+      -- This must match the extension expected by the server watchdog
       let compactIleanPath := ilean.addExtension "mmap"
       buildFileUnlessUpToDate' compactIleanPath <|
         proc {
